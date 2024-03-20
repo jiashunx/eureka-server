@@ -1,0 +1,31 @@
+
+spring:
+  profiles:
+    active: '@profiles.avtive@'
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: dev
+server:
+  port: 20000
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: sit
+server:
+  port: 20000
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: prod
+server:
+  port: 20000
