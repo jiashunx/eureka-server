@@ -14,7 +14,7 @@
    - 启动参数
 
    ```text
-   # 指定不同环境配置文件（以源码方式运行时若不指定则默认dev，以jar包方式运行时需指定）
+   # 指定不同环境配置文件（若不指定则默认dev，可指定参数值：dev|sit|prod）
    --spring.profiles.active=prod
    # 示例启动命令
    java -jar eureka-server.jar --spring.profiles.active=prod
@@ -61,7 +61,9 @@
 
    - 若需修改配置文件，可拷贝 [application.yaml](./src/main/resources/application.yaml) 及 [bootstrap.yaml](./src/main/resources/bootstrap.yaml) 至宿主机目录：<b>/app/docker/eureka-server/config</b>，然后按需修改
 
-   - 启动eureka-server容器命令
+      - 注意: 若修改 [bootstrap.yaml](./src/main/resources/bootstrap.yaml) 文件则需修改 spring.profiles.active 参数为确定值
+
+   - 创建并启动eureka-server容器
 
    ```text
    docker run -itd \
@@ -71,7 +73,11 @@
    --restart=always \
    --name eureka-server \
    eureka-server:${version} \
-   --spring.profiles.active=prod
+   --spring.profiles.active=prod \
+   --spring.config.location=/app/eureka-server/config/
+
+   # 注意: 若不指定spring.profiles.active参数则默认dev
+   # 注意: 若指定spring.config.location则需注意配置文件中的spring.profiles.active需自行修改
    ```
 
    - 访问eureka-server服务：http://宿主机IP:20000
