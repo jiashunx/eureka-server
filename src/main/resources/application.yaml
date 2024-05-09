@@ -1,6 +1,12 @@
 spring:
   application:
     name: eureka-server
+  security:
+    basic:
+      enabled: true
+    user:
+      name: admin
+      password: 123123
 eureka:
   instance:
     hostname: 127.0.0.1
