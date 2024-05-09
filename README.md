@@ -45,11 +45,11 @@
 
       - 备注：从容器访问宿主机，使用默认桥接模式访问主机（ip addr show docker0，可查看主机上Docker IP，默认：172.17.0.1）
 
-   - 执行镜像构建命令：<b>docker build -t eureka-server:${version} ./</b>
+   - 执行镜像构建命令：<b>docker build -t eureka-server:1.1.0 ./</b>
 
       - 镜像名称：eureka-server
 
-      - 镜像版本：${version}
+      - 镜像版本：1.1.0
 
       - Dockerfile文件名称：参数<b>-f Dockerfile</b>，若不指定"-f"参数默认找"Dockerfile"
 
@@ -72,7 +72,7 @@
    -v /app/docker/eureka-server/config:/app/eureka-server/config \
    --restart=always \
    --name eureka-server \
-   eureka-server:${version} \
+   eureka-server:1.1.0 \
    --spring.profiles.active=prod \
    --spring.config.location=/app/eureka-server/config/
 
